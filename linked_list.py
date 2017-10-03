@@ -36,6 +36,11 @@ class LinkedList(object):
 
         return False
 
+    def first(self):
+        return self.head.next if self.head.next != self.tail else None
+
+    def last(self):
+        return self.tail.prev if self.tail.prev != self.head else None
 
     def get(self, key):
         for node in self:
