@@ -29,6 +29,34 @@ class LinkedList(object):
         self.tail.prev = node
         return node
 
+    def includes(self, key):
+        for node in self:
+            if node.key == key:
+                return True
+
+        return False
+
+
+    def get(self, key):
+        for node in self:
+            if node.key == key:
+                return node.data
+
+    def update(self, key, data):
+        for node in self:
+            if node.key == key:
+                node.data = data
+                return node
+
+    def remove(self, key):
+        for node in self:
+            if node.key == key:
+                node.remove()
+                return node
+
+    def __str__(self):
+        return ', '.join([str([node.key, node.data]) for node in self])
+
     def __iter__(self):
         current = self.head.next
         while current.next is not None:
@@ -54,21 +82,25 @@ if __name__ == "__main__":
     ll.append(2, 4)
     ll.append(3, 9)
 
+    print(ll)
     # print(ll.next().data)
     # print(ll.next().data)
     # print(ll.next().data)
     # print(ll.next().data)
-
 
     for node in ll:
         print(node.data)
 
-    for node in ll:
-        if node.data == 1:
-            print('found')
+    print(ll.get(1))
 
-    for node in ll:
-        print(node.data)
+    print(ll.includes(4))
+
+    ll.remove(3)
+    print(ll)
+
+    print(ll.update(5, 7))
+    print(ll)
+
 
 
 
