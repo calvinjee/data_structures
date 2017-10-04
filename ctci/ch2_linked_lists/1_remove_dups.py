@@ -8,11 +8,11 @@ def remove_dups(ll):
         return
 
     node = ll.head
-    seen = set([node.val])
+    seen = {node.val}
     while node.next:
         if node.next.val in seen:
             node.next = node.next.next
-        else
+        else:
             seen.add(node.next.val)
             node = node.next
 
